@@ -163,6 +163,15 @@ test("can lookup templates via Ember.TEMPLATES", function() {
   ok(template, 'template should resolve');
 });
 
+test("can lookup underscored templates via Ember.TEMPLATES", function() {
+  Ember.TEMPLATES['my_template'] = function() {
+    return '<h1>herp</h1>';
+  };
+
+  var template = resolver.resolve('template:my_template');
+  ok(template, 'template should resolve');
+});
+
 module("custom prefixes by type", {
   teardown: resetRegistry
 });
